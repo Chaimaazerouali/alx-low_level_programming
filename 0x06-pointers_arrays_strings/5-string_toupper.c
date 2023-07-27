@@ -3,14 +3,15 @@
 /**
 * string_toupper - prototype
 * Description: a function changes all low letters to upp
-* @s: string
-* * Return: (s)
+* @s: the string to be changed.
+* Return: A pointer to the changed string.
+*
 */
 
 char *string_toupper(char *s)
 
 {
-	int a = 0;
+	iint a = 0;
 
 	while (s[a] != '\0')
 	{
