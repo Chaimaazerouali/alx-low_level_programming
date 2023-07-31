@@ -1,33 +1,25 @@
+
 #include "main.h"
-
 /**
-* _strspn - Prototype
-* Description : a function gets the length of a prefix substring
-* @s: string
-* @accept: string contain charchters to match in s
-* Return: c
-*/
-
-unsigned int _strspn(char *s, char *accept)
+ * _strpbrk - Entry point
+ * @s: input
+ * @a: input
+ * Return: Always 0 (Success)
+ */
+char *_strpbrk(char *s, char *a)
 {
-	int a, b, c = 0;
+		int k;
 
-	a = 0;
-	while (s[a] != '\0')
-	{
-		a++;
-		b = 0;
-		while (accept[b] != '\0')
+		while (*s)
 		{
-			if (s[a] == accept[b])
+			for (k = 0; a[k]; k++)
 			{
-				c++;
-				break;
+			if (*s == a[k])
+			return (s);
 			}
-			b++;
+		s++;
 		}
-		if (accept[b] == '\0')
-			break;
-	}
-	return (c);
+
+	return ('\0');
 }
+
