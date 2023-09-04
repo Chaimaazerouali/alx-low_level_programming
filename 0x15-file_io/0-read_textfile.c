@@ -1,36 +1,34 @@
 #include "main.h"
+
 /**
-* read_textfile - reads a text file and prints it to the POSIX standard output.
-* @filename: the name of the file to be read.
-* @letters: size of bytes to be read from the file.
-* Return: the actual number of letters it could read and print.
-*if the file can not be opened or read, return 0.
-*if filename is NULL return 0.
-*if write fails or does not write the expected amount of bytes, return 0.
-*/
-ssize_t read_textfile(const char *filename, size_t letters)
+ * create_file - Creates a file.
+ * @filename: A pointer to the name of the file to create.
+ * @text_content: A pointer to a string to write to the file.
+ *
+ * Return: If the function fails - -1.
+ *         Otherwise - 1.
+ */
+int create_file(const char *filename, char *text_content)
 {
-	ssize_t fd, rb, wb;
-	char *buffer;
+	int fd, w, len = 0;
 
-	if (!filename)
-		return (0);
+	if (filename == NULL)
+		return (-1);
 
-	buffer = malloc(sizeof(char) * letters);
-	if (!buffer)
-		return (0);
-
-	fd = open(filename, O_RDONLY);
-	rb = read(fd, buffer, letters);
-	wb = write(STDOUT_FILENO, buffer, rb);
-	if (fd == -1 || rb == -1 || wb == -1 || wb != rb)
+	if (text_content != NULL)
 	{
-		free(buffer);
-		return (0);
+		for (len = 0; text_content[len];)
+			len++;
 	}
 
-	free(buffer);
-	if (close(fd) == -1)
-		return (0);
-	return (wb);
+	fd = open(filename, O_CREAT | O_RDWR | O_TRUNC, 0600);
+	w = write(fd, text_content, len);
+
+	if (fd == -1 || w == -1)
+		return (-1);
+
+	close(fd);
+
+	return (1);
 }
+
