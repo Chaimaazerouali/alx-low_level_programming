@@ -4,7 +4,7 @@
  * dlistint_len - Return the length of a doubly-linked list.
  * @h: Pointer to the head node.
  *
- * This function calculates and returns the number of elements in a doubly-linked list.
+ * This function calculates the number of elements in a doubly-linked list.
  *
  * Return: The size of the list.
  */
