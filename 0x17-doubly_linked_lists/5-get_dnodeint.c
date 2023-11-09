@@ -20,6 +20,6 @@ dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index)
         current_node = current_node->next;
     }
 
-    return current_node;
+    return (current_node);
 }
 
