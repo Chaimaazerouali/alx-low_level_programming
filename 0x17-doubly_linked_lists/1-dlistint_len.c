@@ -18,6 +18,6 @@ size_t dlistint_len(const dlistint_t *h)
 		size++;
 	}
 
-	return size;
+	return (size);
 }
 
