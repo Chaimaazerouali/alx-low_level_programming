@@ -14,7 +14,6 @@ dlistint_t *current_node;
 current_node = head;
 
 while (index > 0 && current_node)
-    
 {
 index--;
 current_node = current_node->next;
