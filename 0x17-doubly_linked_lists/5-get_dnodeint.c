@@ -10,16 +10,16 @@
  */
 dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index)
 {
-    dlistint_t *current_node;
+dlistint_t *current_node;
+current_node = head;
 
-    current_node = head;
+while (index > 0 && current_node)
+    
+{
+index--;
+current_node = current_node->next;
+}
 
-    while (index > 0 && current_node)
-    {
-        index--;
-        current_node = current_node->next;
-    }
-
-    return (current_node);
+return (current_node);
 }
 
