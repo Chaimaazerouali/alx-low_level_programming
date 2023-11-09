@@ -1,54 +1,54 @@
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
+#include <string.h>
 
 /**
- * main - Generate a key depending on a username for Crackme5.
- * @argc: Number of arguments passed.
- * @argv: Arguments passed to main.
- *
- * Return: 0 on success, 1 on error.
- */
-int main(int argc, char **argv)
+* main - Generates and prints passwords for the crackme5 executable.
+* @argc: The number of arguments supplied to the program (unused).
+* @argv: An array of pointers to the arguments.
+*
+* Return: Always 0.
+*/
+int main(int __attribute__((__unused__)) argc, char *argv[])
 {
-    unsigned int index, value;
-    size_t username_length, accumulated_value;
-    char *key_characters = "A-CHRDw87lNS0E9B2TibgpnMVys5XzvtOGJcYLU+4mjW6fxqZeF3Qa1rPhdKIouk";
-    char generated_key[7] = "      ";
-
-    if (argc != 2)
-    {
-        printf("Correct usage: ./keygen5 username\n");
-        return 1;
-    }
-
-    username_length = strlen(argv[1]);
-    generated_key[0] = key_characters[(username_length ^ 59) & 63];
-
-    for (index = 0, accumulated_value = 0; index < username_length; index++)
-        accumulated_value += argv[1][index];
-    generated_key[1] = key_characters[(accumulated_value ^ 79) & 63];
-
-    for (index = 0, value = 1; index < username_length; index++)
-        value *= argv[1][index];
-    generated_key[2] = key_characters[(value ^ 85) & 63];
-
-    for (value = argv[1][0], index = 0; index < username_length; index++)
-        if ((char)value <= argv[1][index])
-            value = argv[1][index];
-
-    srand(value ^ 14);
-    generated_key[3] = key_characters[rand() & 63];
-
-    for (value = 0, index = 0; index < username_length; index++)
-        value += argv[1][index] * argv[1][index];
-    generated_key[4] = key_characters[(value ^ 239) & 63];
-
-    for (value = 0, index = 0; (char)index < argv[1][0]; index++)
-        value = rand();
-    generated_key[5] = key_characters[(value ^ 229) & 63];
-
-    printf("%s\n", generated_key);
-    return 0;
+char generated_password[7], *codex;
+int input_length = strlen(argv[1]), i, temp;
+codex = "A-CHRDw87lNS0E9B2TibgpnMVys5XzvtOGJcYLU+4mjW6fxqZeF3Qa1rPhdKIouk";
+temp = (input_length ^ 59) & 63;
+generated_password[0] = codex[temp];
+temp = 0;
+for (i = 0; i < input_length; i++)
+{
+temp += argv[1][i];
+}
+generated_password[1] = codex[(temp ^ 79) & 63];
+temp = 1;
+for (i = 0; i < input_length; i++)
+{
+temp *= argv[1][i];
+}
+generated_password[2] = codex[(temp ^ 85) & 63];
+temp = 0;
+for (i = 0; i < input_length; i++)
+{
+if (argv[1][i] > temp)
+temp = argv[1][i];
+}
+srand(temp ^ 14);
+generated_password[3] = codex[rand() & 63];
+itemp = 0;
+for (i = 0; i < input_length; i++)
+{
+temp += (argv[1][i] * argv[1][i]);
+}
+generated_password[4] = codex[(temp ^ 239) & 63];
+for (i = 0; i < argv[1][0]; i++)
+{
+temp = rand();
+}
+generated_password[5] = codex[(temp ^ 229) & 63];
+generated_password[6] = '\0';
+printf("%s", generated_password);
+return (0);
 }
 
