@@ -1,7 +1,7 @@
 #include "hash_tables.h"
 
 /**
-* hash_table_delete - Frees the memory allocated for a hash table and its elements.
+* hash_table_delete - Frees the memory allocated for a hash and its ele.
 * @ht: Pointer to the hash table to delete.
 * Return: void.
 */
