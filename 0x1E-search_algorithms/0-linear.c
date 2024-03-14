@@ -2,11 +2,11 @@
 
 /**
  * linear_search - find value in an array using linear search method
- * @array: pointer to first element in array to be searched
- * @size: size of the array (number of elements)
+ * @array: pointer to  array 
+ * @size: size of the array
  * @value: value to searched for
- * Return: If the value is not present or the array is NULL, -1.
- *         else, the first index where the value is located.
+ *
+ * Return: first index where value is located
  */
 int linear_search(int *array, size_t size, int value)
 {
